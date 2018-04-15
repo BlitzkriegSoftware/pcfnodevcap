@@ -21,31 +21,6 @@ if(!vcs) {
   vcsv["user-provided"] = svc;
 
   cfInfo.services = vcsv;
-
-  cfInfo.listProps = function (serviceName) { 
-    var props = [ ];
-    var ups = { };
-    var creds = this.services["user-provided"];
-
-    creds.forEach(function (s) {
-      if(s.name == serviceName) {
-        ups = s;
-        return;
-      }
-    });
-    
-    var uc = ups["credentials"];
-
-    Object.keys(uc).map(function(objectKey, index) {
-      var value = uc[objectKey];
-      var item = { };
-      item.name = objectKey;
-      item.value = value;
-      props.push(item);
-    });
-
-    return props;
-  }
 }
 
 var vap = process.env.VCAP_APPLICATION;
@@ -53,6 +28,31 @@ var vap = process.env.VCAP_APPLICATION;
 if(!vap) {
   cfInfo.app["name"] = "Demo";
   cfInfo.app["version"] = "(version)";
+}
+
+cfInfo.listProps = function (serviceName) { 
+  var props = [ ];
+  var ups = { };
+  var creds = this.services["user-provided"];
+
+  creds.forEach(function (s) {
+    if(s.name == serviceName) {
+      ups = s;
+      return;
+    }
+  });
+  
+  var uc = ups["credentials"];
+
+  Object.keys(uc).map(function(objectKey, index) {
+    var value = uc[objectKey];
+    var item = { };
+    item.name = objectKey;
+    item.value = value;
+    props.push(item);
+  });
+
+  return props;
 }
 
 module.exports = cfInfo;

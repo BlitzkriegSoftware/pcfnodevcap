@@ -4,4 +4,5 @@ applications:
   stack: cflinuxfs2
   buildpack: nodejs_buildpack
   services:
-  - 
+  - vcapdemo-service01
+  - vcapdemo-service02
