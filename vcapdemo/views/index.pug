@@ -6,14 +6,18 @@ block content
   
   h2 Application
   div
-    p Name: #{info.app.name}
-    p Version #{info.app.version}
+    ul
+      li Name: #{info.app.name}
+      li Version #{info.app.version}
 
   h2 UPS
   div
     ul
       each svc in info.services["user-provided"]
         li= svc.name
+          ul
+            each key, index in info.listProps(svc.name)
+              li #{key.name}: #{key.value}
 
-  //  script.
-  //    console.log(!{JSON.stringify(info)})
+    script.
+      console.log(!{JSON.stringify(info)})
