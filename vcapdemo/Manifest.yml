@@ -1,0 +1,7 @@
+applications:
+- name: VCapDemo
+  memory: 256mb
+  stack: cflinuxfs2
+  buildpack: nodejs_buildpack
+  services:
+  - 

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  
+  h2 Application
+  div
+    p Name: #{info.app.name}
+    p Version #{info.app.version}
+
+  h2 UPS
+  div
+    ul
+      each svc in info.services["user-provided"]
+        li= svc.name
+
+  //  script.
+  //    console.log(!{JSON.stringify(info)})
