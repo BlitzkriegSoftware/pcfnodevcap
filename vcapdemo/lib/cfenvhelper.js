@@ -9,11 +9,11 @@ var vcs = process.env.VCAP_SERVICES;
 if(!vcs) {
   var svc = [];
   
-  var svcFile = path.join(__dirname, '..', '..', 'UPS', 'vcapdemo-service01.json');
+  var svcFile = path.join(__dirname,  '..', 'UPS', 'vcapdemo-service01.json');
   var item = MakeSvc(svcFile);
   svc.push(item);
 
-  svcFile = path.join(__dirname, '..', '..', 'UPS', 'vcapdemo-service02.json');
+  svcFile = path.join(__dirname, '..', 'UPS', 'vcapdemo-service02.json');
   item = MakeSvc(svcFile);
   svc.push(item);
 
